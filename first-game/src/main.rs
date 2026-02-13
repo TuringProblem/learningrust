@@ -21,29 +21,43 @@ fn main() {
             .expect("Please enter a number between 1 and 100");
 
         match input.cmp(&random_number) {
-            Ordering::Less => println!("You guessed: {input} and the number was Less than"),
+            Ordering::Less => {
+                println!("You guessed: {input} and the number was Less than");
+                is_over = handle_reset_logic()
+            }
             Ordering::Greater => {
-                println!("You guessed: {random_number} and the secret number was greater")
+                println!("You guessed: {random_number} and the secret number was greater");
+                is_over = handle_reset_logic()
             }
             Ordering::Equal => {
                 println!("YOU WON!");
                 is_over = false
             }
         }
+    }
+}
 
+/**
+ * Meh, feeling fancy and wanted to make helper funcitons :)
+ **/
+
+fn handle_reset_logic() -> bool {
         println!("Continue? y = yes, n = no");
         let mut continue_line: String = String::with_capacity(1);
         io::stdin().read_line(&mut continue_line).expect("Failed to read line");
 
+
         match continue_line.trim() {
-            "y" => continue,
+            "y" => true,
             "n" => {
-                is_over = false; 
-                println!("Have a good day :)")
+                println!("Have a good day :)");
+                false
             }
-            _ => println!("alright, we are gonna go again then lol...")
+            _ => {
+                println!("alright, we are gonna go again then lol...");
+                false
+            }
         }
-    }
 }
 
 fn retrieve_input_data() -> String {
