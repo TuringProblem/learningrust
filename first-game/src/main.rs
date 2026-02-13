@@ -1,11 +1,18 @@
 use std::io;
 
-fn main() {
-    println!("Please Guess a number: ");
+/**
+ * Author: { @Override }
+ **/
 
-    let mut guess = String::new();
+fn main() {
+    println!("Guess the number!");
+
+    println!("Please enter a number: ");
+
+    let mut input = String::with_capacity(10);
     io::stdin()
-        .read_line(&mut guess)
+        .read_line(&mut input)
         .expect("Failed to read line");
-    println!("You guessed: {guess}");
+
+    println!("You guessed: {input}");
 }
