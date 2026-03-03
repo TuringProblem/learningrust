@@ -20,6 +20,7 @@ fn main() {
             .parse()
             .expect("Please enter a number between 1 and 100");
 
+
         match input.cmp(&random_number) {
             Ordering::Less => {
                 println!("You guessed: {input} and the number was Less than");
@@ -45,7 +46,6 @@ fn handle_reset_logic() -> bool {
         println!("Continue? y = yes, n = no");
         let mut continue_line: String = String::with_capacity(1);
         io::stdin().read_line(&mut continue_line).expect("Failed to read line");
-
 
         match continue_line.trim() {
             "y" => true,
